@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- LINK PARA ICONES: https://materializecss.com/icons.html -->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link type="text/css" rel="stylesheet"
+              href="../css/materialize.min.css" media="screen,projection" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet" />
+        <meta charset="UTF-8" />
+        <title>ANIMAIS</title>
+    </head>
+
+    <body class="grey lighten-3">
+        <div id="listaDeAnimais">
+            <h3 class="main-title center">Animais Cadastrados</h3>
+            <div class="container">
+                <table class="striped responsive-table">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">Nome</th>
+                            <th style="text-align: center;">Especie</th>
+                            <th style="text-align: center;">Tutor</th>
+                            <th style="text-align: center;">Ações</th>
+                        </tr>
+                    </thead>
+                    <tr th:each="animal : ${animais}">
+                        <td style="text-align: center;"><span th:text="${animal.nome}"></span></td>
+                        <td style="text-align: center;"><span th:text="${animal.especie}"></span></td>
+                        <td style="text-align: center;"><span th:text="${animal.tutor.nome}"></span></td>
+                        <td style="text-align: center;">
+                            <a th:href="@{'/animal/excluir/'+${animal.id}}" title="excluir animal">
+                                <i class="tiny material-icons ">delete</i>
+                            </a>
+                            <a th:href="@{'/animal/atualizar/'+${animal.id}}" title="editar animal">
+                                <i class="tiny material-icons ">edit</i>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script type="text/javascript" src="../js/materialize.min.js"></script>
+    </body>
+    <footer>
+        <div class="row">
+            <div class="row">
+                <div class="input-field col s12 center">
+                    <a th:href="@{../}" title="Voltar">
+                        <i class="medium material-icons">arrow_back</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</html>

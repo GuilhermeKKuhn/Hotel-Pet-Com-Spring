@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- LINK PARA ICONES: https://materializecss.com/icons.html -->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link type="text/css" rel="stylesheet"
+              href="../css/materialize.min.css" media="screen,projection" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet" />
+        <meta charset="UTF-8" />
+        <title>Reservas</title>
+    </head>
+
+    <body class="grey lighten-3">
+        <div id="listaDeAnimais">
+            <h3 class="main-title center">Reservas Ativas</h3>
+            <div class="container">
+                <table class="striped responsive-table">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">Animal</th>
+                            <th style="text-align: center;">Especie</th>
+                            <th style="text-align: center;">Tutor</th>
+                            <th style="text-align: center;">Andar</th>
+                            <th style="text-align: center;">Data de Entrada</th>
+                            <th style="text-align: center;">Reserva</th>
+                        </tr>
+                    </thead>
+                    <tr th:each="reserva : ${reservas}">
+                        <td style="text-align: center;"><span th:text="${reserva.animal.nome}"></span></td>
+                        <td style="text-align: center;"><span th:text="${reserva.animal.especie}"></span></td>
+                        <td style="text-align: center;"><span th:text="${reserva.animal.tutor.nome}"></span></td>
+                        <td style="text-align: center;"><span th:text="${reserva.andar}+'º andar'"></span></td>
+                        <td style="text-align: center;"><span th:text="${reserva.data}"></span></td>
+                        <td style="text-align: center;">
+                            <a th:href="@{'/reserva/visualizar/'+${reserva.id}}" title="visualizar reserva">
+                                <i class="tiny material-icons ">view_list</i>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script type="text/javascript" src="../js/materialize.min.js"></script>
+    </body>
+    <footer>
+        <div class="row">
+            <div class="row">
+                <div class="input-field col s12 center">
+                    <a th:href="@{../}" title="Voltar">
+                        <i class="medium material-icons">arrow_back</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</html>
